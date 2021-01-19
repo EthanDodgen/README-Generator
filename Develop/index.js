@@ -4,13 +4,14 @@ const inquirer = require("inquirer")
 //const generatePage = require("./utils/generateMarkdown.js")
 
 // TODO: Create an array of questions for user input
+
 const questions = [
     {
     type: "input",
     name: "title",
     message: "Enter your project title! (Required)",
     //validate: questionInput => {
-        //if(questioninput) {
+        //if(questionInput) {
             //return true
         //} else {
             //console.log("Please enter project Name!")
