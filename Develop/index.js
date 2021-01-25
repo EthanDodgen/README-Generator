@@ -1,12 +1,7 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
-//const promptQuestions = require("./")
-
-const info = []
-
-
-
-
+let info = {}
+const name = info.title
 
 
 //inquirer question prompts function
@@ -97,11 +92,22 @@ const promptQuestions = () => {
 ])
 }
     //calls question prompts
-    promptQuestions().then().push(info)
-    
-    //})
-    //.then(answers => console.log(answers))
+    promptQuestions()
+    .then(answer => {info = answer;console.log(info)})//(info.title), etc etc picks specific answer
 
+    
+
+//const generatePage = (name) => {
+  //return `
+    //Name: ${name}
+  //`
+//}
+//console.log(generatePage("bob"))
+
+
+    
+    //.then(answer => {console.log(answer);return answer})
+    //.then((name) => {info.push(name);console.log(info[0])})                         
 
 // TODO: Create a function to write README file
 //function writeToFile(fileName, data) {}
@@ -118,7 +124,7 @@ const promptQuestions = () => {
  //}
 //init()
 
-module.exports = promptQuestions
+//module.exports.info = info
 
 
 
