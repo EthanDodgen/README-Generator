@@ -1,13 +1,13 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
 const generatePage = require("./utils/readmeTemplate.js")
-let info = {}
-const projectName = info.title
-const projectDescription = info.description
-const projectInstallation = info.installation
-const projectUsage = info.usage
-const projectContribution = info.contribution 
-const projectTest = info.test
+//let info = {}
+//const projectName = info.title
+//const projectDescription = info.description
+//const projectInstallation = info.installation
+//const projectUsage = info.usage
+//const projectContribution = info.contribution 
+//const projectTest = info.test
 
 //inquirer question prompts function
 const promptQuestions = () => {
@@ -96,50 +96,23 @@ const promptQuestions = () => {
     }
 ])
 }
-
-
-    //calls question prompts
-    promptQuestions()
-    .then(answer => {info = answer;console.log(info)})//(info.title), etc etc picks specific answer
-    .then(portfolioData => {
-       const pageHTML = generatePage(portfolioData)
-  
-       fs.writeFile('./README.md', pageHTML, err => {
-         if (err) throw new Error(err)
-  
-       })
+promptQuestions()
+   .then(answer => {
+     info = answer
+     var page = generatePage(info)
+     writeToFile(page)
     })
- 
-
-        //writeToFile = () => {
-          //fs.writeFile("./utils/readme.md", generatePage , err => {
-              //if (err) throw err
-          //})
-        //}
-        //writeToFile()
-
-
     
-
-
-
-    
-    //.then(answer => {console.log(answer);return answer})
-    //.then((name) => {info.push(name);console.log(info[0])})                         
-
-// TODO: Create a function to write README file
-//function writeToFile(fileName, data) {}
-
-
-//}
-//writeToFile()
-
+writeToFile = (page) => {
+    fs.writeFile("./utils/readme.md", page, err => {
+      if (err) throw err
+      })
+    }
+     
 //function to initialize app
 //function init() {
  //}
 //init()
-
-//module.exports.info = info
 
 
 

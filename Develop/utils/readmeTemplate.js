@@ -1,11 +1,11 @@
-module.exports =  templateData => {
-    console.log(templateData)
+module.exports =  templateData = (info) => {
+    //console.log(templateData)
     
   return `
-  # Your Project Title
-    //${projectName}
+  # ${info.title}
+    
   ## Description 
-    ${projectDescription}
+    ${info.description}
   ## Table of Contents (Optional)
     
   * [Installation](#installation)
@@ -14,9 +14,9 @@ module.exports =  templateData => {
   * [License](#license)
   
   ## Installation
-    ${projectInstallation}
+    ${info.installation}
   ## Usage 
-    ${projectUsage}
+    ${info.usage}
   ## Credits
     
   ## License
@@ -26,14 +26,14 @@ module.exports =  templateData => {
   ## Features
   
   ## Contributing
-    ${projectContribution}
+    ${info.contribution}
   ## Tests
-    ${projectTest}
+    ${info.test}
   `
 }
 
 
-//module.exports = generatePage()
+
 
 
 
