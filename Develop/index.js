@@ -1,8 +1,13 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
+const generatePage = require("./utils/readmeTemplate.js")
 let info = {}
-const name = info.title
-
+const projectName = info.title
+const projectDescription = info.description
+const projectInstallation = info.installation
+const projectUsage = info.usage
+const projectContribution = info.contribution 
+const projectTest = info.test
 
 //inquirer question prompts function
 const promptQuestions = () => {
@@ -91,18 +96,31 @@ const promptQuestions = () => {
     }
 ])
 }
+
+
     //calls question prompts
     promptQuestions()
     .then(answer => {info = answer;console.log(info)})//(info.title), etc etc picks specific answer
+    .then(portfolioData => {
+       const pageHTML = generatePage(portfolioData)
+  
+       fs.writeFile('./README.md', pageHTML, err => {
+         if (err) throw new Error(err)
+  
+       })
+    })
+ 
+
+        //writeToFile = () => {
+          //fs.writeFile("./utils/readme.md", generatePage , err => {
+              //if (err) throw err
+          //})
+        //}
+        //writeToFile()
+
 
     
 
-//const generatePage = (name) => {
-  //return `
-    //Name: ${name}
-  //`
-//}
-//console.log(generatePage("bob"))
 
 
     
@@ -112,10 +130,7 @@ const promptQuestions = () => {
 // TODO: Create a function to write README file
 //function writeToFile(fileName, data) {}
 
-//writeToFile = () => {
-    //fs.writeFile("./utils/readme.js", "completed readme", err => {
-        //if (err) throw err
-    //})
+
 //}
 //writeToFile()
 
